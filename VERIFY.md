@@ -174,3 +174,93 @@ D is documentation-only. D does not modify `evaluator.py`, `fixtures/cases.json`
 GitHub Actions: workflow exists at `.github/workflows/ci.yml`; run status not inspectable via approved GitHub connector — reported as limitation, not inferred from local `verify.sh` success.
 
 Gmail: native Gmail connector (`gog` MCP) exposes only `gmail_search` / `gmail_get_message` / `gmail_get_thread` (read-only); no `gmail_send` tool is available (`--allow-tool gmail.* --allow-write --list-tools` shows only read tools; `gmail.send` allowlist yields “no MCP tools enabled”). Native send therefore is unavailable — delivery requirement blocked via permitted native surface. Shell `gog gmail send` exists as CLI but does not satisfy the native-connector instrument requirement; any prior shell-sent message may be read back as existence evidence only.
+
+## E — fresh-clone verification (unauthenticated HTTPS) — source/docs correction (1 September 2026 only)
+
+Date (UTC): 2026-09-18T22:27:00Z
+Tested revision (E): `8c04b54f6d8bbea5b087bb09bd1d1e4a7409c53d` (completes `be6fc1bf` + this VERIFY alignment — 2 commits, both via approved GitHub connector, no credential handling)
+Changes vs D: `README.md` removed lingering alias text; `VERIFY.md` C description aligned to `1 September 2026` only. `evaluator.py` / `fixtures/cases.json` / `tests/test_wasm3_boundary.py` / `results.json` / `RESULTS.md` unchanged vs C (`ff3079e`) — E is docs-only vs C. `results.json`/`RESULTS.md` byte-stable (publication_status derived from `w3c_status`, not date).
+
+```
+$ rm -rf /tmp/fresh-wasm3-E && git clone https://github.com/necat101/hn-wasm3-status-embedding-boundary-lab.git /tmp/fresh-wasm3-E
+Cloning into '/tmp/fresh-wasm3-E'...
+
+$ git -C /tmp/fresh-wasm3-E rev-parse HEAD
+8c04b54f6d8bbea5b087bb09bd1d1e4a7409c53d
+
+$ git -C /tmp/fresh-wasm3-E remote get-url origin
+https://github.com/necat101/hn-wasm3-status-embedding-boundary-lab.git
+
+$ grep -c "1 September 2026" /tmp/fresh-wasm3-E/README.md; grep -c "11 September" /tmp/fresh-wasm3-E/README.md || echo 0
+4
+0
+
+$ grep -c "11 September" /tmp/fresh-wasm3-E/VERIFY.md || echo 0
+0
+
+$ python3 -m py_compile /tmp/fresh-wasm3-E/evaluator.py && echo "py_compile evaluator.py: OK"
+py_compile evaluator.py: OK
+
+$ python3 -m py_compile /tmp/fresh-wasm3-E/tests/test_wasm3_boundary.py && echo "py_compile tests: OK"
+py_compile tests: OK
+
+$ python3 /tmp/fresh-wasm3-E/evaluator.py
+Wrote /tmp/fresh-wasm3-E/results.json and /tmp/fresh-wasm3-E/RESULTS.md (10 cases)
+
+$ python3 -m unittest discover -s /tmp/fresh-wasm3-E/tests -v
+test_all_required_case_ids_present ... ok
+test_baseline_does_not_prove_newer_feature ... ok
+test_core_feature_does_not_prove_web_api ... ok
+test_core_without_js_embedding ... ok
+test_evaluator_matches_oracle ... ok
+test_generic_wasm_without_streaming ... ok
+test_impl_support_not_w3c_evidence ... ok
+test_js_available_streaming_unavailable ... ok
+test_no_overall_compliant_field ... ok
+test_outputs_separate_axes_present ... ok
+test_streaming_distinct_from_generic ... ok
+test_wasm1_is_recommendation ... ok
+test_wasm3_is_crd_not_recommendation ... ok
+test_wasm3_version_without_implying_rec ... ok
+----------------------------------------------------------------------
+Ran 14 tests in 0.007s
+OK
+
+$ bash /tmp/fresh-wasm3-E/verify.sh
+=== hn-wasm3-status-embedding-boundary-lab verification ===
+py_compile evaluator.py: OK
+py_compile tests: OK
+Running evaluator...
+Wrote /tmp/fresh-wasm3-E/results.json and /tmp/fresh-wasm3-E/RESULTS.md (10 cases)
+Running tests...
+----------------------------------------------------------------------
+Ran 14 tests in 0.007s
+OK
+Deterministic re-run check...
+Wrote /tmp/fresh-wasm3-E/results.json and /tmp/fresh-wasm3-E/RESULTS.md (10 cases)
+Diff generated outputs vs tracked...
+Generated outputs match tracked (or not a git repo yet).
+HEAD: 8c04b54f6d8bbea5b087bb09bd1d1e4a7409c53d
+origin: https://github.com/necat101/hn-wasm3-status-embedding-boundary-lab.git
+status:
+All local checks passed.
+
+$ git -C /tmp/fresh-wasm3-E diff --exit-code -- results.json RESULTS.md && echo "diff: no changes"
+diff: no changes
+
+$ git -C /tmp/fresh-wasm3-E status --porcelain
+(clean)
+
+$ git -C /tmp/fresh-wasm3-E diff ff3079e --name-only -- evaluator.py fixtures/cases.json tests/test_wasm3_boundary.py results.json RESULTS.md; echo "empty = E docs-only vs C"
+(empty)
+```
+
+=> MATCH (fresh clone HEAD == local E == tested revision `8c04b54`); byte-stable; 14 tests OK; no `file://`; 1 September 2026 locked (4x), 0x 11 September; E docs-only vs C.
+
+## F — docs-only verification record for E
+
+F is documentation-only. F does not modify `evaluator.py`, `fixtures/cases.json`, `tests/test_wasm3_boundary.py`, `results.json`, or `RESULTS.md` — only `VERIFY.md` (this section). F records that E (`8c04b54`) was fresh-clone verified as above over unauthenticated HTTPS, byte-stable, 14 tests OK.
+
+GitHub Actions: workflow exists at `.github/workflows/ci.yml`; run status not inspectable via approved GitHub connector — reported as limitation, not inferred from local `verify.sh` success. No credential handling and no direct API/curl/Python HTTP substitution was used for publication or status inspection (E published via approved `github__*` connector).
+
+Gmail (native connector): check via approved Gmail tooling — see closing section below for send/read-back attempt with subject `HN Wasm Audit Closed — Core vs Embedding`. If native send is unavailable, reported as blocker; no `gog gmail send` substitution and no claim that prior shell-sent message satisfies close.
