@@ -24,7 +24,7 @@ Rule: **version ≠ Recommendation ≠ Core semantics ≠ JS API ≠ Web API ≠
 ## What the primary sources actually say (verified 2026-09-18)
 
 - **Core 1.0 — W3C Recommendation:** `https://www.w3.org/TR/wasm-core-1/` serves `W3C Recommendation, 5 December 2019` (`<meta name="w3c-status" content="REC">`). This is the published standard.
-- **Core 2.0 / current Core 3.0 — Candidate Recommendation Draft:** `https://www.w3.org/TR/wasm-core-2/` (also served at `https://www.w3.org/TR/wasm-core/` latest) shows `W3C Candidate Recommendation Draft, 11 September 2026` (`<meta name="w3c-status" content="CRD">`). The abstract reads *“This document describes release 3.0 of the core WebAssembly standard”* — that names the **Core version** while the status region declares it a **CRD, not a W3C Recommendation**. The two facts are independent.
+- **Core 2.0 / current Core 3.0 — Candidate Recommendation Draft:** `https://www.w3.org/TR/wasm-core-2/` (also served at `https://www.w3.org/TR/wasm-core/` latest) shows `W3C Candidate Recommendation Draft, 1 September 2026` (`<meta name="w3c-status" content="CRD">`). The abstract reads *“This document describes release 3.0 of the core WebAssembly standard”* — that names the **Core version** while the status region declares it a **CRD, not a W3C Recommendation**. The two facts are independent. SotD: *"The WebAssembly Working Group intends to maintain this publication in the Candidate Recommendation state and continually update it as a "living standard" rather than transition to Recommendation state."* **Conclusion unchanged:** "Wasm 3.0" names the current Core release; it does not mean W3C Recommendation.
 - **JavaScript Interface — separate CRD:** `https://www.w3.org/TR/wasm-js-api/` (canonical `https://www.w3.org/TR/wasm-js-api-2/`) is `W3C Candidate Recommendation Draft` (`<meta name="w3c-status" content="CRD">`, Bikeshed 2026-08-21). Defines the JS embedding independent of Core semantics.
 - **Web API — separate CRD:** `https://www.w3.org/TR/wasm-web-api/` (canonical `https://www.w3.org/TR/wasm-web-api-2/`) is `W3C Candidate Recommendation Draft` (`<meta name="w3c-status" content="CRD">`, Bikeshed 2026-08-21). Defines browser-specific `compileStreaming`/`instantiateStreaming` and related fetch integration — distinct from the JS Interface.
 - **WebAssembly.org — community/spec hub:** `https://webassembly.org/` describes Wasm as a portable code format and points to the W3C Community Group + Working Group as the standards venues. No download-time or performance claims are made; the site links to MDN for developer documentation. Feature implementation status is documented separately at `https://webassembly.org/features/`.
@@ -47,12 +47,12 @@ Quoted text is abbreviated; IDs and authors are exact so you can re-fetch `https
 
 | # | Proposition seen on thread | Source | Assessment | Evidence class |
 |---|---|---|---|---|
-| 1 | Firefox configured with WebAssembly disabled by policy; asks for a visible “This captcha requires WebAssembly” message and notes smaller platforms/browsers may not offer a Wasm engine at all | **doctor_radium · 49593106** | **Browser compatibility / Wasm-disabled engines.** An engine may lack Wasm entirely or have it disabled. Supports the “Core module support with JS embedding unavailable” boundary: owning a Wasm engine is not uniform. Fixture `core_without_js_embedding` tests this. | HN opinion + implementation support |
+| 1 | Firefox configured with WebAssembly disabled by policy; asks for a visible "This captcha requires WebAssembly" message and notes smaller platforms/browsers may not offer a Wasm engine at all | **doctor_radium · 49593106** | **Implementation availability / compatibility variance only.** An engine may lack Wasm entirely or have it disabled by policy. Does not by itself prove "Core supported but JS embedding unavailable" — that separation is established by W3C (Core vs wasm-js-api) and synthetic fixture `core_without_js_embedding`. | HN opinion + implementation support |
 | 2 | “Is there a place where I can try out if my browser is compatible?” — notes `wasm-feature-detect` shows missing 3 features, asks whether Anubis will fall back to a pure-JS solution, and notes Wasm is “ridiculously performant” vs wasm2js | **Aachen · 49591443** | **Browser compatibility + fallback + perceived performance.** Passages rate-of-adoption are uneven; a fallback (`wasm2js`) exists and is slower. Supports “baseline vs newer feature” and “JS vs generic” separations; performance remark is anecdotal, not benchmark data (no benchmark claimed here). | HN opinion + implementation support |
 | 3 | “Hats off for targeting Chrome 66” — notes backwards-compatibility pain and testing on a 2014 Yosemite Mac; suggests period-correct toolchains | **kccqzy · 49591573** | **Deployment complexity / compatibility.** Older browsers remain in the wild; supporting them constrains which Wasm features can be assumed present. Baseline support does not guarantee newer Core features. | HN opinion |
 | 4 | “You can use Rust’s `wasm32v1-none` target to get baseline WASM with no extra target features (restricts to `#[no_std]`).” | **Georgelemental · 49593021** | **Feature availability — baseline vs extended.** Toolchains explicitly distinguish baseline (MVP) from post-MVP extensions. Supports the invariant that generic “Wasm support” does not imply every newer Core feature. | HN opinion + implementation support |
 | 5 | “something I was doing with my ‘strict MVP’ build wasn’t in fact sticking to just MVP … `wasm32-unknown-unknown` had extra non-mvp features added later — a breaking change on stable” | **adrian17 · 49595614** | **Feature availability footgun.** Even a nominally “MVP” build can silently depend on newer features; engine support is not uniform and must be tested per-feature, not per-label. | HN opinion + implementation support |
-| 6 | “I assume previous challenges will still be available when WASM is not available … or as a fallback. … ‘smart’ TVs … run browsers old enough to not know what WASM is.” Asks whether scraper can force fallback. | **dspillett · 49593048** | **Fallback / deployment complexity.** Anubis anticipates missing Wasm and keeps a non-Wasm path. Supports “Core module support with JS embedding unavailable” and “JS API available while Web streaming unavailable” — layers degrade independently. | HN opinion + implementation support |
+| 6 | "I assume previous challenges will still be available when WASM is not available ... or as a fallback. ... 'smart' TVs ... run browsers old enough to not know what WASM is." Asks whether scraper can force fallback. | **dspillett · 49593048** | **Fallback / deployment compatibility only.** Anubis anticipates missing Wasm and keeps a non-Wasm path. Does not by itself prove "JS API available but streaming Web API unavailable" — that JS≠Web separation is established by W3C (wasm-js-api vs wasm-web-api) and synthetic fixtures `js_available_streaming_unavailable` / `streaming_distinct_from_generic`. | HN opinion + implementation support |
 
 *If a comment you need is missing, fetch it directly — these are not invented. Example: `python3 -c "import urllib.request,json;print(json.load(urllib.request.urlopen('https://hacker-news.firebaseio.com/v0/item/49593106.json')))"`*
 
@@ -69,7 +69,7 @@ Pure **Python stdlib + shell**, no Wasm engines, no browser automation, no JS ru
 | id | Tests |
 |---|---|
 | `wasm1_recommendation` | Wasm 1.0 Recommendation (2019-12-05) — `publication_status=W3C Recommendation` |
-| `wasm3_core_crd_current` | Wasm 3.0 Candidate Recommendation Draft (2026-09-11 CRD) — version 3.0 does NOT imply Recommendation |
+| `wasm3_core_crd_current` | Wasm 3.0 Candidate Recommendation Draft (2026-09-01 CRD, living standard) — version 3.0 does NOT imply Recommendation |
 | `baseline_without_newer_feature` | Baseline Core supported, modeled newer feature (gc-feature) false — baseline ≠ newer feature |
 | `core_feature_without_web_api` | Newer Core feature true, Web API streaming false — Core ≠ Web API |
 | `core_without_js_embedding` | Core feature true, JS API unavailable — Core independent of embedding |
@@ -137,9 +137,9 @@ python3 -m unittest tests/test_wasm3_boundary.py -v
 
 - HN item `49590611` + sampled comments above via `hacker-news.firebaseio.com/v0/item/<id>.json` (36 top-level kids; 199 descendants; sampled within them the 6 quoted above and additional candidates 49591573/49593021/49595614/49593048)
 - `https://www.w3.org/TR/wasm-core-1/` — headers `REC`, `W3C Recommendation, 5 December 2019`
-- `https://www.w3.org/TR/wasm-core-2/` and `https://www.w3.org/TR/wasm-core/` — headers `CRD`, `W3C Candidate Recommendation Draft, 11 September 2026` (abstract names release 3.0; status remains CRD)
-- `https://www.w3.org/TR/wasm-js-api/` / `https://www.w3.org/TR/wasm-js-api-2/` — headers `CRD` (WebAssembly JavaScript Interface)
-- `https://www.w3.org/TR/wasm-web-api/` / `https://www.w3.org/TR/wasm-web-api-2/` — headers `CRD` (WebAssembly Web API, streaming)
+- `https://www.w3.org/TR/wasm-core-2/` and `https://www.w3.org/TR/wasm-core/` — headers `CRD`, `W3C Candidate Recommendation Draft, 1 September 2026` (dated `CRD-wasm-core-2-20260901`; latest alias currently serves 11 September 2026, same CRD status; abstract names release 3.0; status remains CRD; living-standard intent as above)
+- `https://www.w3.org/TR/wasm-js-api/` / `https://www.w3.org/TR/wasm-js-api-2/` — headers `CRD` (WebAssembly JavaScript Interface; `CRD-wasm-js-api-2-20260901` and `CRD-wasm-js-api-2-20260911` both CRD, same SotD living-standard intent)
+- `https://www.w3.org/TR/wasm-web-api/` / `https://www.w3.org/TR/wasm-web-api-2/` — headers `CRD` (WebAssembly Web API, streaming; `CRD-wasm-web-api-2-20260901` / `20260911` both CRD)
 - `https://webassembly.org/` + `https://webassembly.org/features/` — community/spec hub and feature-support reference
 - No Wasm execution, browser automation, or performance measurement was performed; all evidence is synthetic and deterministic (no external packages).
 
@@ -156,7 +156,7 @@ Status conclusions (unchanged):
 
 ```
 Wasm 1.0:             W3C Recommendation (2019-12-05).
-Wasm 3.0 (current):   Candidate Recommendation Draft (2026-09-11) — version 3.0 without implying Recommendation.
+Wasm 3.0 (current):   Candidate Recommendation Draft (2026-09-01, living standard in CR — latest alias 2026-09-11 same status) — version 3.0 without implying Recommendation.
 Core version:         names the Core iteration, not the W3C publication tier.
 Core semantics:       independent of a concrete embedding.
 JavaScript API:       separate layer from Core.
