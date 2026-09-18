@@ -137,9 +137,9 @@ python3 -m unittest tests/test_wasm3_boundary.py -v
 
 - HN item `49590611` + sampled comments above via `hacker-news.firebaseio.com/v0/item/<id>.json` (36 top-level kids; 199 descendants; sampled within them the 6 quoted above and additional candidates 49591573/49593021/49595614/49593048)
 - `https://www.w3.org/TR/wasm-core-1/` — headers `REC`, `W3C Recommendation, 5 December 2019`
-- `https://www.w3.org/TR/wasm-core-2/` and `https://www.w3.org/TR/wasm-core/` — headers `CRD`, `W3C Candidate Recommendation Draft, 1 September 2026` (dated `CRD-wasm-core-2-20260901`; latest alias currently serves 11 September 2026, same CRD status; abstract names release 3.0; status remains CRD; living-standard intent as above)
-- `https://www.w3.org/TR/wasm-js-api/` / `https://www.w3.org/TR/wasm-js-api-2/` — headers `CRD` (WebAssembly JavaScript Interface; `CRD-wasm-js-api-2-20260901` and `CRD-wasm-js-api-2-20260911` both CRD, same SotD living-standard intent)
-- `https://www.w3.org/TR/wasm-web-api/` / `https://www.w3.org/TR/wasm-web-api-2/` — headers `CRD` (WebAssembly Web API, streaming; `CRD-wasm-web-api-2-20260901` / `20260911` both CRD)
+- `https://www.w3.org/TR/wasm-core-2/` and `https://www.w3.org/TR/wasm-core/` — headers `CRD`, `W3C Candidate Recommendation Draft, 1 September 2026` (abstract names release 3.0; status remains CRD; Working Group intends to maintain in Candidate Recommendation as a continually updated living standard)
+- `https://www.w3.org/TR/wasm-js-api/` / `https://www.w3.org/TR/wasm-js-api-2/` — headers `CRD`, `W3C Candidate Recommendation Draft, 1 September 2026` (WebAssembly JavaScript Interface; Working Group intends to maintain in Candidate Recommendation as a continually updated living standard)
+- `https://www.w3.org/TR/wasm-web-api/` / `https://www.w3.org/TR/wasm-web-api-2/` — headers `CRD`, `W3C Candidate Recommendation Draft, 1 September 2026` (WebAssembly Web API, streaming; Working Group intends to maintain in Candidate Recommendation as a continually updated living standard)
 - `https://webassembly.org/` + `https://webassembly.org/features/` — community/spec hub and feature-support reference
 - No Wasm execution, browser automation, or performance measurement was performed; all evidence is synthetic and deterministic (no external packages).
 
@@ -156,7 +156,7 @@ Status conclusions (unchanged):
 
 ```
 Wasm 1.0:             W3C Recommendation (2019-12-05).
-Wasm 3.0 (current):   Candidate Recommendation Draft (2026-09-01, living standard in CR — latest alias 2026-09-11 same status) — version 3.0 without implying Recommendation.
+Wasm 3.0 (current):   Candidate Recommendation Draft (2026-09-01, living standard in CR) — version 3.0 without implying Recommendation.
 Core version:         names the Core iteration, not the W3C publication tier.
 Core semantics:       independent of a concrete embedding.
 JavaScript API:       separate layer from Core.
