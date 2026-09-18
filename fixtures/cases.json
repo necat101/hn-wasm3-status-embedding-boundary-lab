@@ -1,0 +1,194 @@
+[
+  {
+    "id": "wasm1_recommendation",
+    "spec": {
+      "core_version": "1.0",
+      "w3c_status": "W3C Recommendation",
+      "is_w3c_recommendation": true,
+      "publication_date": "2019-12-05",
+      "tr_url": "https://www.w3.org/TR/wasm-core-1/"
+    },
+    "engine": {
+      "modeled_core_feature": "baseline-mvp",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": true,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": true },
+    "web_api": { "generic_supported": true, "streaming_supported": true },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "wasm3_core_crd_current",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/",
+      "note": "Abstract describes release 3.0 of the core WebAssembly standard; Status section shows W3C Candidate Recommendation Draft 11 Sept 2026 (CRD, not Recommendation)"
+    },
+    "engine": {
+      "modeled_core_feature": "gc-tail-call",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": null,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": null },
+    "web_api": { "generic_supported": null, "streaming_supported": null },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "baseline_without_newer_feature",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/"
+    },
+    "engine": {
+      "modeled_core_feature": "gc-feature",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": false,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": true },
+    "web_api": { "generic_supported": true, "streaming_supported": true },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "core_feature_without_web_api",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/"
+    },
+    "engine": {
+      "modeled_core_feature": "tail-call",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": true,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": true },
+    "web_api": { "generic_supported": false, "streaming_supported": false },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "core_without_js_embedding",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/"
+    },
+    "engine": {
+      "modeled_core_feature": "multi-memory",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": true,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": false },
+    "web_api": { "generic_supported": false, "streaming_supported": false },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "js_available_streaming_unavailable",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/"
+    },
+    "engine": {
+      "modeled_core_feature": "extended-const",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": true,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": true },
+    "web_api": { "generic_supported": true, "streaming_supported": false },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "streaming_distinct_from_generic",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/"
+    },
+    "engine": {
+      "modeled_core_feature": "relaxed-simd",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": true,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": true },
+    "web_api": { "generic_supported": true, "streaming_supported": false },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "generic_wasm_without_streaming",
+    "spec": {
+      "core_version": "2.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2024-04-16",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/"
+    },
+    "engine": {
+      "modeled_core_feature": "memory64",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": false,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": true },
+    "web_api": { "generic_supported": true, "streaming_supported": false },
+    "implementation_claim_used_as_w3c_evidence": false
+  },
+  {
+    "id": "impl_support_mistaken_for_w3c_status",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/"
+    },
+    "engine": {
+      "modeled_core_feature": "gc-feature",
+      "supports_baseline_core": true,
+      "supports_modeled_core_feature": true,
+      "generic_wasm_supported": true
+    },
+    "js_api": { "supported": true },
+    "web_api": { "generic_supported": true, "streaming_supported": true },
+    "implementation_claim_used_as_w3c_evidence": true
+  },
+  {
+    "id": "wasm3_version_without_rec_status",
+    "spec": {
+      "core_version": "3.0",
+      "w3c_status": "Candidate Recommendation Draft",
+      "is_w3c_recommendation": false,
+      "publication_date": "2026-09-11",
+      "tr_url": "https://www.w3.org/TR/wasm-core-2/",
+      "note": "Wasm 3.0 describes current Core spec version without implying W3C Recommendation status"
+    },
+    "engine": {
+      "modeled_core_feature": null,
+      "supports_baseline_core": null,
+      "supports_modeled_core_feature": null,
+      "generic_wasm_supported": null
+    },
+    "js_api": { "supported": null },
+    "web_api": { "generic_supported": null, "streaming_supported": null },
+    "implementation_claim_used_as_w3c_evidence": false
+  }
+]

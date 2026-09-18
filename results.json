@@ -1,0 +1,234 @@
+[
+  {
+    "id": "wasm1_recommendation",
+    "core_version": "1.0",
+    "publication_status": "W3C Recommendation",
+    "core_feature_supported": true,
+    "js_api_supported": true,
+    "web_api_supported": {
+      "generic": true,
+      "streaming": true,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "baseline-mvp",
+      "modeled_core_feature_supported": true,
+      "js_api_supported": true,
+      "web_api_streaming_supported": true,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "wasm3_core_crd_current",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": null,
+    "js_api_supported": null,
+    "web_api_supported": null,
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "gc-tail-call",
+      "modeled_core_feature_supported": null,
+      "js_api_supported": null,
+      "web_api_streaming_supported": null,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "baseline_without_newer_feature",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": false,
+    "js_api_supported": true,
+    "web_api_supported": {
+      "generic": true,
+      "streaming": true,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "gc-feature",
+      "modeled_core_feature_supported": false,
+      "js_api_supported": true,
+      "web_api_streaming_supported": true,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "core_feature_without_web_api",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": true,
+    "js_api_supported": true,
+    "web_api_supported": {
+      "generic": false,
+      "streaming": false,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "tail-call",
+      "modeled_core_feature_supported": true,
+      "js_api_supported": true,
+      "web_api_streaming_supported": false,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "core_without_js_embedding",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": true,
+    "js_api_supported": false,
+    "web_api_supported": {
+      "generic": false,
+      "streaming": false,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "multi-memory",
+      "modeled_core_feature_supported": true,
+      "js_api_supported": false,
+      "web_api_streaming_supported": false,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "js_available_streaming_unavailable",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": true,
+    "js_api_supported": true,
+    "web_api_supported": {
+      "generic": true,
+      "streaming": false,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "extended-const",
+      "modeled_core_feature_supported": true,
+      "js_api_supported": true,
+      "web_api_streaming_supported": false,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "streaming_distinct_from_generic",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": true,
+    "js_api_supported": true,
+    "web_api_supported": {
+      "generic": true,
+      "streaming": false,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "relaxed-simd",
+      "modeled_core_feature_supported": true,
+      "js_api_supported": true,
+      "web_api_streaming_supported": false,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "generic_wasm_without_streaming",
+    "core_version": "2.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": false,
+    "js_api_supported": true,
+    "web_api_supported": {
+      "generic": true,
+      "streaming": false,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "memory64",
+      "modeled_core_feature_supported": false,
+      "js_api_supported": true,
+      "web_api_streaming_supported": false,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "impl_support_mistaken_for_w3c_status",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": true,
+    "js_api_supported": true,
+    "web_api_supported": {
+      "generic": true,
+      "streaming": true,
+      "streaming_distinct_from_generic": true
+    },
+    "implementation_evidence": {
+      "generic_wasm_supported": true,
+      "baseline_core_supported": true,
+      "modeled_core_feature": "gc-feature",
+      "modeled_core_feature_supported": true,
+      "js_api_supported": true,
+      "web_api_streaming_supported": true,
+      "claim_used_as_w3c_status_evidence": true,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  },
+  {
+    "id": "wasm3_version_without_rec_status",
+    "core_version": "3.0",
+    "publication_status": "Candidate Recommendation Draft",
+    "core_feature_supported": null,
+    "js_api_supported": null,
+    "web_api_supported": null,
+    "implementation_evidence": {
+      "generic_wasm_supported": null,
+      "baseline_core_supported": null,
+      "modeled_core_feature": null,
+      "modeled_core_feature_supported": null,
+      "js_api_supported": null,
+      "web_api_streaming_supported": null,
+      "claim_used_as_w3c_status_evidence": false,
+      "is_w3c_status_evidence": false,
+      "note": "Implementation/browser support is evidence about an implementation, not the normative W3C publication status."
+    },
+    "core_embedding_separation_note": "Core defines module semantics independent of a concrete embedding; Core support does not entail JS/Web API support."
+  }
+]
