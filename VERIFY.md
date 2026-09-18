@@ -93,7 +93,7 @@ $ git -C /tmp/fresh-wasm3-A status --porcelain
 
 Date (UTC): 2026-09-18T21:40:39Z
 Tested revision (C): `ff3079ef09379c3756faf89c4dc27a31b1864e65`
-Changes vs B: `fixtures/cases.json` publication_date 2026-09-11 → 2026-09-01 (8 records) + living-standard SotD note; `README.md` corrected Core bullet to 1 September 2026 (dated TR CRD-wasm-core-2-20260901; latest alias 20260911 same CRD), JS/Web bullets noted, Sources + snapshot updated; HN ledger narrowed (49593106 / 49593048). `results.json`/`RESULTS.md` byte-stable (publication_status derived from w3c_status, not date).
+Changes vs B: `fixtures/cases.json` publication_date 2026-09-11 → 2026-09-01 (8 records) + living-standard SotD note; `README.md` corrected to 1 September 2026 for Core/JS Interface/Web API (with living-standard qualification), Sources + snapshot updated; HN ledger narrowed (49593106 / 49593048). `results.json`/`RESULTS.md` byte-stable (publication_status derived from w3c_status, not date).
 
 ```
 $ rm -rf /tmp/fresh-wasm3-C && git clone https://github.com/necat101/hn-wasm3-status-embedding-boundary-lab.git /tmp/fresh-wasm3-C
